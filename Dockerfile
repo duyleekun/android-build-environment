@@ -41,3 +41,6 @@ ENV PATH "$PATH:$PWD/android-sdk-linux/platform-tools/""
 RUN mkdir -p "$ANDROID_HOME/licenses" || true
 RUN echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
 RUN echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
+
+RUN \curl -sSL https://get.rvm.io | bash -s master --ruby
+RUN source /usr/local/rvm/scripts/rvm; gem install fastlane -NV
