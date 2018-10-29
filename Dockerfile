@@ -49,7 +49,7 @@ RUN mkdir -p "$ANDROID_HOME" \
     && yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 
 # AIDL deps
-RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub wget https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
+RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
 RUN mkdir -p /tmp/glibc
 RUN for PACKAGE in glibc glibc-bin glibc-i18n glibc-dev; do \
         export APK_FILE="${PACKAGE}-${GLIBC_VERSION}.apk"; \
