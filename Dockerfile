@@ -11,22 +11,24 @@ ENV DOCKER_ANDROID_LANG en_US
 ENV DOCKER_ANDROID_DISPLAY_NAME mobileci-docker
 
 ENV ANDROID_SDK_TOOLS "4333796"
+ENV FASTLANE_VERSION=2.107.0
 
 
 # Never ask for confirmations
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get --quiet update --yes
-RUN apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1
-RUN rm -rf /var/lib/apt/lists/*
-RUN apt-get clean
+RUN apk update
+RUN apk add wget tar unzip curl bash ruby ruby-irb ruby-dev libstdc++ zlib-dev openssh g++ make
+RUN rm -rf /var/cache/apk/*
 
+# Fastlane
+RUN gem install fastlane -N -v $FASTLANE_VERSION
+
+# Android tool
 RUN wget --quiet --output-document=android-sdk.tgz https://dl.google.com/android/repository/sdk-tools-linux-$ANDROID_SDK_TOOLS.zip
 RUN unzip android-sdk.tgz
 RUN rm android-sdk.tgz
 
+
 ENV ANDROID_HOME "$PWD/tools"
 ENV PATH "$PATH:$PWD/tools/bin/"
-
-RUN \curl -sSL https://get.rvm.io | bash -s master --ruby
-RUN source /usr/local/rvm/scripts/rvm; gem install fastlane -NV
