@@ -14,7 +14,7 @@ ENV DOCKER_ANDROID_DISPLAY_NAME mobileci-docker
 ENV ANDROID_HOME="/usr/local/android-sdk"
 ENV ANDROID_SDK_TOOLS_VERSION "4333796"
 
-ENV GLIBC_VERSION=2.27-r0
+ENV GLIBC_VERSION=2.28-r0
 ENV FASTLANE_VERSION=2.107.0
 
 # Never ask for confirmations
@@ -49,7 +49,7 @@ RUN mkdir -p "$ANDROID_HOME" \
     && yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 
 # AIDL deps
-RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub
+RUN wget -q -O /etc/apk/keys/sgerrand.rsa.pub wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub
 RUN mkdir -p /tmp/glibc
 RUN for PACKAGE in glibc glibc-bin glibc-i18n glibc-dev; do \
         export APK_FILE="${PACKAGE}-${GLIBC_VERSION}.apk"; \
