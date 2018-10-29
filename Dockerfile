@@ -21,6 +21,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apk add --update \
     ca-certificates \
+    bash \
     wget \
     unzip \
     libstdc++ \
