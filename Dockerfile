@@ -25,6 +25,7 @@ RUN apk add --update \
     bash \
     wget \
     unzip \
+    git \    
     libstdc++ \
     g++ \
     make \
