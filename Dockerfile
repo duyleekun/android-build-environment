@@ -44,9 +44,10 @@ ENV DOWNLOAD_FILE=/tmp/sdk.zip
 RUN mkdir -p "$ANDROID_HOME" \
     && wget -q -O "$DOWNLOAD_FILE" $SDK_URL \
     && unzip "$DOWNLOAD_FILE" -d "$ANDROID_HOME" \
-    && rm "$DOWNLOAD_FILE" \
-    && yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
-
+    && rm "$DOWNLOAD_FILE"
+RUN $ANDROID_HOME/tools/bin/sdkmanager --update
+RUN $ANDROID_HOME/tools/bin/sdkmanager --install "build-tools;27.0.3" "platforms;android-27"
+RUN yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 # Android tool
 RUN mkdir /app
 WORKDIR /app
