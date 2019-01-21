@@ -46,7 +46,7 @@ RUN mkdir -p "$ANDROID_HOME" \
     && unzip "$DOWNLOAD_FILE" -d "$ANDROID_HOME" \
     && rm "$DOWNLOAD_FILE"
 RUN $ANDROID_HOME/tools/bin/sdkmanager --update
-RUN $ANDROID_HOME/tools/bin/sdkmanager --install "build-tools;27.0.3" "platforms;android-27"
+RUN yes | $ANDROID_HOME/tools/bin/sdkmanager --install "build-tools;27.0.3" "platforms;android-27"
 RUN yes | $ANDROID_HOME/tools/bin/sdkmanager --licenses
 # Android tool
 RUN mkdir /app
