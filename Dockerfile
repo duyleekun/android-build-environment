@@ -33,6 +33,7 @@ RUN apk add --update \
     ruby-irb \
     ruby-dev \
     yarn \
+    ruby-bundler \
     && rm -rf /var/cache/apk/*
 
 # Fastlane
