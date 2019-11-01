@@ -38,6 +38,7 @@ RUN apk add --update \
 
 # Fastlane
 RUN gem install fastlane -N -v $FASTLANE_VERSION
+RUN yarn global add npx
 
 
 # Android SDK
