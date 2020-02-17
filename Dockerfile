@@ -38,8 +38,7 @@ RUN apk add --update \
 
 # Fastlane
 RUN gem install fastlane -N -v $FASTLANE_VERSION
-RUN yarn global add npx 
-RUN npm install -g firebase-tools
+RUN yarn global add npx firebase-tools
 
 
 # Android SDK
