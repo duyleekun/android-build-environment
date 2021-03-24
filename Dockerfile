@@ -1,6 +1,6 @@
 # Android Dockerfile
 
-FROM openjdk:8-jdk-alpine
+FROM alpine:3.13.0
 
 MAINTAINER Le Duc Duy "duyleekun@gmail.com"
 
@@ -20,7 +20,7 @@ ENV FASTLANE_VERSION=2.178.0
 # Never ask for confirmations
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apk add --update \
+RUN apk add --no-cache \
     ca-certificates \
     bash \
     wget \
@@ -33,14 +33,14 @@ RUN apk add --update \
     ruby-irb \
     ruby-dev \
     ruby-etc \
-    yarn \
-    && rm -rf /var/cache/apk/*
+    yarn
 
 # Fastlane
 RUN gem install bundler --no-document
 RUN gem install fastlane -N -v $FASTLANE_VERSION
 RUN yarn global add npx firebase-tools
 
+RUN apk add openjdk8 --no-cache
 
 # Android SDK
 ENV SDK_URL="https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS_VERSION}.zip"
