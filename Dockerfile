@@ -1,6 +1,6 @@
 # Android Dockerfile
 
-FROM openjdk:17-jdk-alpine
+FROM openjdk:8-jdk-alpine
 
 MAINTAINER Le Duc Duy "duyleekun@gmail.com"
 
@@ -33,10 +33,10 @@ RUN apk add --update \
     ruby-irb \
     ruby-dev \
     yarn \
-    ruby-bundler \
     && rm -rf /var/cache/apk/*
 
 # Fastlane
+RUN gem install bundler
 RUN gem install fastlane -N -v $FASTLANE_VERSION
 RUN yarn global add npx firebase-tools
 
