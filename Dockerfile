@@ -36,7 +36,7 @@ RUN apk add --update \
     && rm -rf /var/cache/apk/*
 
 # Fastlane
-RUN gem install bundler
+RUN gem install bundler --no-document
 RUN gem install fastlane -N -v $FASTLANE_VERSION
 RUN yarn global add npx firebase-tools
 
