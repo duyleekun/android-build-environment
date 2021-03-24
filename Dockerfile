@@ -1,6 +1,6 @@
 # Android Dockerfile
 
-FROM openjdk:8-jdk-alpine
+FROM openjdk:17-jdk-alpine
 
 MAINTAINER Le Duc Duy "duyleekun@gmail.com"
 
