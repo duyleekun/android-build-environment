@@ -32,6 +32,7 @@ RUN apk add --update \
     ruby \
     ruby-irb \
     ruby-dev \
+    ruby-etc \
     yarn \
     && rm -rf /var/cache/apk/*
 
