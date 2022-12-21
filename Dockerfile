@@ -38,6 +38,7 @@ RUN gem install bundler --no-document
 RUN gem install fastlane -N -v $FASTLANE_VERSION
 RUN yarn global add npx firebase-tools
 
+
 # Android SDK
 ENV SDK_URL="https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS_VERSION}.zip"
 ENV DOWNLOAD_FILE=/tmp/sdk.zip
