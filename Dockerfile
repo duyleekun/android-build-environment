@@ -1,6 +1,6 @@
 # Android Dockerfile
 
-FROM alpine:3.17.0
+FROM openjdk11:alpine
 
 # Sets language to UTF8 : this works in pretty much all cases
 ENV LANG en_US.UTF-8
@@ -49,7 +49,7 @@ RUN mkdir -p "$ANDROID_HOME" \
     && rm "$DOWNLOAD_FILE"
 
 RUN mv $ANDROID_HOME/cmdline-tools $ANDROID_HOME/latest && mkdir $ANDROID_HOME/cmdline-tools/ && mv $ANDROID_HOME/latest $ANDROID_HOME/cmdline-tools/
-RUN yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "build-tools;28.0.3" "build-tools;29.0.3" "platforms;android-29"
+RUN yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "build-tools;28.0.3" "build-tools;29.0.3" "build-tools;31.0.0" "platforms;android-29" "platforms;android-31"
 RUN yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
 
