@@ -1,8 +1,6 @@
 # Android Dockerfile
 
-FROM alpine:3.13.0
-
-MAINTAINER Le Duc Duy "duyleekun@gmail.com"
+FROM alpine:3.17.0
 
 # Sets language to UTF8 : this works in pretty much all cases
 ENV LANG en_US.UTF-8
@@ -12,10 +10,10 @@ ENV DOCKER_ANDROID_DISPLAY_NAME mobileci-docker
 
 
 ENV ANDROID_HOME="/usr/local/android-sdk"
-ENV ANDROID_SDK_TOOLS_VERSION "6858069_latest"
+ENV ANDROID_SDK_TOOLS_VERSION "9123335_latest"
 
-ENV GLIBC_VERSION=2.33-r0
-ENV FASTLANE_VERSION=2.178.0
+ENV GLIBC_VERSION=2.35-r0
+ENV FASTLANE_VERSION=2.211.0
 
 # Never ask for confirmations
 ENV DEBIAN_FRONTEND noninteractive
@@ -64,7 +62,7 @@ RUN for PACKAGE in glibc glibc-bin glibc-i18n glibc-dev; do \
         wget -O $APK_PATH https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/${APK_FILE} && \
         ls -alh $APK_PATH && \
         echo https://github.com/sgerrand/alpine-pkg-glibc/releases/download/${GLIBC_VERSION}/${APK_FILE} && \
-        apk add $APK_PATH; \
+        apk add --force-overwrite $APK_PATH; \
     done
 
 RUN rm -rf /tmp/glibc
