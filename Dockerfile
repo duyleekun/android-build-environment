@@ -1,6 +1,6 @@
 # Android Dockerfile
 
-FROM adoptopenjdk/openjdk11:alpine
+FROM adoptopenjdk/openjdk16:alpine
 
 # Sets language to UTF8 : this works in pretty much all cases
 ENV LANG en_US.UTF-8
